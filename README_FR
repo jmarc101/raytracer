@@ -1,0 +1,49 @@
+Compilation et execution sur *nix
+=================================
+
+Le Makefile fourni compilera ce devoir sur un bon nombre de systemes
+bases Linux/Unix. Tout ce que vous avez a faire et executer la commande :
+
+    make
+
+Puis, pour lancer l'executable :
+
+    ./raytracer
+
+Par defaut, ceci rendra une scene contenant seulement un cube rouge
+et sauvegardera les images resultantes sous output.bmp.
+
+Pour lancer l'executable et rendre une scene differente, passez-la comme
+premier argument :
+
+    ./raytracer your_scene_file_path
+
+
+
+Description des fichiers (TRES UTILE)
+=====================================
+
+Le fichier "main.cpp" est l'entree du programme, il utilise la classe Parser (definie dans
+"parser.hpp" er "parser.cpp") pour analyser les fichiers de scene et creer un objet Scene
+(definie dans "scene.hpp") pour les etapes du lancer de rayons.
+
+Puis, le Raytracer (defini dans "raytracer.hpp" et "raytracer.cpp") est utilise pour rendre
+la scene. Il rend la scene dans un objet Image et sauvegarde celle-ci dans un fichier bmp
+(qui est supporte par "image.hpp").
+
+L'objet Scene peut contenir plusieurs objets geometriques (definis dans "object.hpp" et
+"object.cpp"). Les outils mathematiques basiques tels que les vecteurs, matrices, rayons
+et intersections sont definis dans "basic.hpp".
+
+Basiquement, votre travail est d'ecrire le code dans "object.cpp" et "raytracer.cpp".
+Il est recommande de jeter un coup d'oeil rapide aux fichiers "basic.hpp", "object.hpp",
+"raytracer.hpp", et "scene.hpp" pour avoir une bonne idee des classes C++ utilisees, ce qui
+vous aidera avec le code. Le reste des fichiers : "image.hpp", "parser.cpp", et 
+"parser.hpp" sont moins importants que ceux mentionnes ci-dessus.
+
+
+
+Format des scenes
+=================
+
+Referez-vous a scenes/basic.ray pour un fichier scene exemple avec commentaires.

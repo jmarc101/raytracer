@@ -1,0 +1,117 @@
+# Spécifie les dimensions de sortie.
+Dimensions 640 480
+
+Supersampling 1.0
+
+
+# Comme gluPerspective.
+Perspective 30.0 1.33 3 20
+
+# Comme gluLookAt.
+LookAt  0  1.25  10 # position de l'oeil
+        0  0 0 # position du focus
+        0 0.992278 -0.124035 # Vecteur up
+
+
+# Matériau bleu
+Material "blue"
+    "texture" ""
+    "ambient"   [0.0 1.0 1.0]
+    "diffuse"   [0.0 0.0 1.0]
+    "specular"  [0.1 0.1 0.1]
+    "emission"  [0.0 0.0 0.0]
+    "shininess" 10.0
+    "shadow"    1
+    "reflect"   0.0
+    "refract"   1.0
+    "transparency"      0.0
+
+Material "red"
+    "texture" ""
+    "ambient"   [0.1 0.1 0.1]
+    "diffuse"   [2.0 2.0 2.0]
+    "specular"  [1.0 1.0 1.0]
+    "emission"  [0.0 0.0 0.0]
+    "shininess" 10.0 # exposant spéculaire
+    "shadow"    0.3   # facteur d'ombre [0 = aucune ombre, 1 = ombre noire, 0..1 ajouté à la couleur de la surface]
+    "reflect"   0.0   # facteur de reflection [0 = aucune reflection, 1 = reflection totale, 0..1 ajouté à la couleur de la surface]
+    "refract"   1.53
+    "transparency"      0.0
+
+# Matériau blanc.
+Material "white"
+    "texture" ""
+    "ambient"   [0.1 0.1 0.1]
+    "diffuse"   [2.0 2.0 2.0]
+    "specular"  [0 0 0]
+    "emission"  [0 0 0]
+    "shininess" 0.0
+    "shadow"    0.8
+    "reflect"   0.0
+    "refract"   0.0
+    "transparency"      0.0
+
+Material "pink"
+    "texture" ""
+    "ambient"   [1.0 0.2 0.0]
+    "diffuse"   [1.0 1.0 1.0]
+    "specular"  [0 0 0]
+    "emission"  [0 0 0]
+    "shininess" 0.0
+    "shadow"    0.8
+    "reflect"   0.0
+    "refract"   0.0
+    "transparency"      0.0
+
+###############################################################################
+
+PushMatrix
+    Translate -0.80 -0.25 0
+    Sphere 0.75 "blue"
+PopMatrix
+
+PushMatrix
+    Translate 1 -0.25 3
+    Sphere 0.75 "red"
+PopMatrix
+
+# Sol
+PushMatrix
+    Translate 0 -1.25 0
+    Rotate -90 1 0 0
+    Plane "white"
+PopMatrix
+
+# Murs
+PushMatrix
+    Translate 0 0 -1.25
+    Plane "white"
+PopMatrix
+PushMatrix
+    Translate 3 0 0
+    Rotate 90 0 1 0
+    Plane "blue"
+PopMatrix
+PushMatrix
+    Translate -3 0 0
+    Rotate -90 0 1 0
+    Plane "pink"
+PopMatrix
+###############################################################################
+# Spécification pour une source d elumière :
+# La syntaxe basique est `PointLight x y z`, suivi par une liste de paramètres
+# (à partir de laquelle la classe PointLight récupère ses valeurs).
+
+PointLight 2 10 2            # position [x y z]
+    "ambient"     [0.1 0.1 0.1]    # couleur ambiante [r g b]
+    "diffuse"     [8.0 8.0 12.0]   # couleur diffuse
+    "specular"    [20.0 20.0 20.0] # couleur speculaire
+    "attenuation" [1.8 3.0 0.0]    # attenuation [constant linear square]
+    "radius"      1.0
+
+PointLight 2 8 5
+    "ambient"     [0.1 0.1 0.1]
+    "diffuse"     [8.0 8.0 12.0]
+    "specular"    [20.0 20.0 20.0]
+    "attenuation" [1.8 3.0 0.0]
+    "radius"      1.0
